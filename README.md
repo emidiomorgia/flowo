@@ -203,17 +203,18 @@ Please follow the project best practices and branching strategy outlined below.
 
 ## Branching Strategy
 
-We follow a GitFlow-inspired branching model:
+We follow a **trunk-based development** branching model:
 
-| Branch        | Purpose                                  |
-|---------------|------------------------------------------|
-| `main`        | Stable production-ready code             |
-| `develop`     | Integration branch for completed features |
-| `feature/*`   | Development of new features or improvements |
-| `hotfix/*`    | Urgent fixes to production                |
-| `release/*`   | Preparation for upcoming releases         |
+| Branch      | Purpose                                   |
+|-------------|-------------------------------------------|
+| `main`      | The single trunk branch, always deployable|
+| `feature/*` | Short-lived branches for new features or fixes, merged quickly to `main` via PR |
 
-Every new feature or fix must be implemented in its own branch and merged back to `develop` via Pull Request after successful CI verification and code review.
+- All development happens on short-lived feature branches created from `main`.
+- Feature branches should be kept small and merged back to `main` as soon as possible after passing CI and code review.
+- Releases and hotfixes are tagged directly on `main`.
+- Avoid long-running branches; rebase frequently to keep up to date with `main`.
+- Continuous integration ensures `main` is always in a deployable state.
 
 ---
 
